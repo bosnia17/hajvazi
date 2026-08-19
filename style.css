@@ -1,0 +1,737 @@
+:root {
+    --mz-primary: #176b57;
+    --mz-primary-dark: #104d40;
+    --mz-primary-light: #e1f3ed;
+    --mz-text: #173c33;
+    --mz-muted: #74827e;
+    --mz-background: #f5f7f6;
+    --mz-border: #dfe8e4;
+    --mz-white: #ffffff;
+    --mz-danger: #a84840;
+    --mz-warning: #a87916;
+    --mz-blue: #315f91;
+    --mz-radius: 15px;
+    --mz-shadow: 0 8px 25px rgba(23, 60, 51, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--mz-text);
+    background-color: var(--mz-background);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+a {
+    color: var(--mz-primary);
+}
+
+a:hover {
+    color: var(--mz-primary-dark);
+}
+
+
+/* =========================================================
+   GLAVNO ZAGLAVLJE
+   ========================================================= */
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    padding: 58px 0;
+    color: var(--mz-white);
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(121, 216, 185, 0.18),
+            transparent 28%
+        ),
+        linear-gradient(135deg, #185e4f 0%, #237d68 100%);
+    box-shadow: 0 8px 30px rgba(23, 60, 51, 0.12);
+}
+
+.hero-section::after {
+    position: absolute;
+    right: -100px;
+    bottom: -180px;
+    width: 400px;
+    height: 400px;
+    content: "";
+    border: 70px solid rgba(255, 255, 255, 0.035);
+    border-radius: 50%;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-label,
+.section-label {
+    display: inline-block;
+    color: #87ddc3;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16rem;
+}
+
+.section-label {
+    margin-bottom: 7px;
+    color: #178366;
+}
+
+.hero-section .btn {
+    position: relative;
+    z-index: 2;
+    border: 0;
+    border-radius: 11px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.hero-section .btn:hover {
+    color: var(--mz-primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16) !important;
+}
+
+
+/* =========================================================
+   PRETRAGA
+   ========================================================= */
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 290px;
+}
+
+.search-box i {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    z-index: 2;
+    color: #71827d;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.search-box .form-control {
+    min-height: 46px;
+    padding-left: 42px;
+    border-color: #d3ded9;
+    border-radius: 11px;
+    background-color: var(--mz-white);
+}
+
+.search-box .form-control:focus {
+    border-color: #56a991;
+    box-shadow: 0 0 0 0.2rem rgba(23, 107, 87, 0.12);
+}
+
+
+/* =========================================================
+   KARTICE UKUPNE STATISTIKE
+   Ove elemente automatski pravi app.js
+   ========================================================= */
+
+.summary-card,
+.stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 115px;
+    padding: 22px;
+    border: 1px solid var(--mz-border);
+    border-radius: var(--mz-radius);
+    background-color: var(--mz-white);
+    box-shadow: var(--mz-shadow);
+}
+
+.summary-card span,
+.stat-card span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--mz-muted);
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.summary-card strong,
+.stat-card strong {
+    display: block;
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.summary-card > i,
+.stat-card > i {
+    font-size: 2.1rem;
+    opacity: 0.8;
+}
+
+.summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    font-size: 1.5rem;
+}
+
+.summary-icon.income {
+    color: #15704f;
+    background-color: #ddf3e9;
+}
+
+.summary-icon.expense {
+    color: #98473e;
+    background-color: #f8e5e2;
+}
+
+.summary-icon.balance {
+    color: #315f91;
+    background-color: #e2edf8;
+}
+
+
+/* =========================================================
+   KARTICE PROJEKATA
+   ========================================================= */
+
+.project-card {
+    overflow: hidden;
+    border-radius: 16px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 38px rgba(23, 73, 61, 0.14) !important;
+}
+
+.project-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-description {
+    min-height: 43px;
+}
+
+.project-label {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--mz-muted);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.07rem;
+}
+
+.project-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    color: var(--mz-primary);
+    background-color: var(--mz-primary-light);
+    font-size: 1.15rem;
+}
+
+.project-card .progress {
+    height: 17px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #e8eeec;
+}
+
+.project-card .progress-bar {
+    min-width: 42px;
+    border-radius: 20px;
+    font-size: 0.67rem;
+    font-weight: 700;
+}
+
+.finance-box {
+    padding: 14px 4px;
+    border: 1px solid var(--mz-border);
+    border-radius: 12px;
+    background-color: #f8faf9;
+}
+
+.finance-box span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--mz-muted);
+    font-size: 0.69rem;
+}
+
+.finance-box strong {
+    display: block;
+    padding: 0 3px;
+    font-size: 0.82rem;
+}
+
+.project-card .btn {
+    min-height: 44px;
+    margin-top: auto;
+    border-radius: 9px;
+    font-weight: 650;
+}
+
+.btn-outline-success {
+    color: var(--mz-primary);
+    border-color: var(--mz-primary);
+}
+
+.btn-outline-success:hover {
+    color: var(--mz-white);
+    border-color: var(--mz-primary);
+    background-color: var(--mz-primary);
+}
+
+.btn-success {
+    border-color: var(--mz-primary);
+    background-color: var(--mz-primary);
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    border-color: var(--mz-primary-dark);
+    background-color: var(--mz-primary-dark);
+}
+
+
+/* =========================================================
+   PRAZNO STANJE I PORUKE
+   ========================================================= */
+
+.empty-state {
+    padding: 70px 20px;
+    text-align: center;
+    color: #70807b;
+    border: 1px dashed #c7d6d1;
+    border-radius: 15px;
+    background-color: var(--mz-white);
+}
+
+.empty-state i {
+    display: block;
+    margin-bottom: 15px;
+    color: #8caaa1;
+    font-size: 3rem;
+}
+
+.empty-state h3 {
+    font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   DIALOG / MODAL
+   ========================================================= */
+
+dialog {
+    width: min(650px, 95vw);
+    max-height: 92vh;
+    padding: 0;
+    overflow: auto;
+    color: var(--mz-text);
+    border: 0;
+    border-radius: 17px;
+    background-color: var(--mz-white);
+    box-shadow: 0 25px 85px rgba(0, 0, 0, 0.35);
+}
+
+dialog.wide {
+    width: min(1100px, 96vw);
+}
+
+dialog::backdrop {
+    background-color: rgba(12, 43, 36, 0.72);
+    backdrop-filter: blur(3px);
+}
+
+.dialog-header,
+.detail-header {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--mz-border);
+    background-color: var(--mz-white);
+}
+
+.dialog-body,
+.detail-body {
+    padding: 28px;
+}
+
+.dialog-footer,
+.detail-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 17px 28px;
+    border-top: 1px solid var(--mz-border);
+    background-color: #f8faf9;
+}
+
+.detail-footer {
+    justify-content: space-between;
+}
+
+.btn-close {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   FORME
+   ========================================================= */
+
+.form-label {
+    color: #29463f;
+    font-weight: 650;
+}
+
+.form-control,
+.form-select,
+.input-group-text {
+    min-height: 44px;
+    border-color: #d2dcda;
+}
+
+.form-control,
+.form-select {
+    border-radius: 9px;
+}
+
+.input-group .form-control {
+    border-radius: 9px 0 0 9px;
+}
+
+.input-group-text {
+    color: #4d625c;
+    background-color: #f1f5f3;
+}
+
+textarea.form-control {
+    min-height: auto;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #56a991;
+    box-shadow: 0 0 0 0.2rem rgba(23, 107, 87, 0.12);
+}
+
+
+/* =========================================================
+   DETALJNI PREGLED PROJEKTA
+   ========================================================= */
+
+.project-detail {
+    background-color: var(--mz-white);
+}
+
+.detail-info-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+    padding: 15px;
+    border: 1px solid var(--mz-border);
+    border-radius: 12px;
+    background-color: var(--mz-white);
+}
+
+.detail-info-card span {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--mz-muted);
+    font-size: 0.7rem;
+}
+
+.detail-info-card strong {
+    display: block;
+    font-size: 0.86rem;
+}
+
+.detail-info-card a {
+    color: var(--mz-text);
+    text-decoration: none;
+}
+
+.detail-info-card a:hover {
+    color: var(--mz-primary);
+}
+
+.detail-stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 105px;
+    padding: 20px;
+    border-radius: 13px;
+}
+
+.detail-stat-card span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.75rem;
+}
+
+.detail-stat-card strong {
+    display: block;
+    font-size: 1.15rem;
+}
+
+.detail-stat-card > i {
+    font-size: 1.8rem;
+    opacity: 0.75;
+}
+
+.income-card {
+    color: #126047;
+    background-color: #ddf3e9;
+}
+
+.expense-card {
+    color: #8c3f38;
+    background-color: #f8e6e3;
+}
+
+.balance-card {
+    color: #285383;
+    background-color: #e2edf8;
+}
+
+.donors-card {
+    color: #735814;
+    background-color: #f7efcf;
+}
+
+.project-progress-box {
+    padding: 22px;
+    border: 1px solid #dbe6e2;
+    border-radius: 14px;
+    background-color: #f8faf9;
+}
+
+.project-progress-box .progress {
+    height: 12px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #e4ebe8;
+}
+
+.project-progress-box .progress-bar {
+    border-radius: 20px;
+}
+
+.progress-percentage {
+    color: var(--mz-primary);
+    font-size: 1.25rem;
+}
+
+
+/* =========================================================
+   TABOVI DETALJNOG PREGLEDA
+   ========================================================= */
+
+.project-tabs {
+    gap: 4px;
+    padding: 6px;
+    border-radius: 12px;
+    background-color: #edf2f0;
+}
+
+.project-tabs .nav-link {
+    color: #536d66;
+    border-radius: 9px;
+    font-weight: 650;
+}
+
+.project-tabs .nav-link:hover {
+    color: var(--mz-primary);
+}
+
+.project-tabs .nav-link.active {
+    color: var(--mz-white);
+    background-color: var(--mz-primary);
+}
+
+.project-tabs .nav-link .badge {
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================================================
+   TABELE DONACIJA I RASHODA
+   ========================================================= */
+
+.project-table {
+    overflow: hidden;
+    border: 1px solid var(--mz-border);
+    border-radius: 12px;
+}
+
+.project-table .table {
+    margin-bottom: 0;
+}
+
+.project-table thead th {
+    padding: 14px 16px;
+    color: #65756f;
+    border-bottom-width: 1px;
+    background-color: #f7f9f8;
+    font-size: 0.7rem;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.project-table tbody td {
+    padding: 14px 16px;
+    vertical-align: middle;
+}
+
+.project-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.donor-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: var(--mz-primary);
+    border-radius: 50%;
+    background-color: #dff1eb;
+    font-size: 0.78rem;
+    font-weight: 750;
+}
+
+.payment-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 9px;
+    color: #4f665f;
+    border-radius: 20px;
+    background-color: #eef3f1;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FORME ZA NOVU DONACIJU I RASHOD
+   ========================================================= */
+
+.entry-form-box {
+    height: 100%;
+    padding: 20px;
+    border: 1px solid #cfe2dc;
+    border-radius: 13px;
+    background-color: #f4f9f7;
+}
+
+.information-box {
+    height: 100%;
+    padding: 22px;
+    border: 1px solid var(--mz-border);
+    border-radius: 13px;
+    background-color: var(--mz-white);
+}
+
+
+/* =========================================================
+   MOBILNI PRIKAZ
+   ========================================================= */
+
+@media (max-width: 991px) {
+    .hero-section {
+        padding: 46px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-section {
+        padding: 38px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .search-box {
+        max-width: none;
+    }
+
+    .dialog-header,
+    .detail-header,
+    .dialog-body,
+    .detail-body {
+        padding: 20px;
+    }
+
+    .dialog-footer,
+    .detail-footer {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 16px 20px;
+    }
+
+    .dialog-footer .btn,
+    .detail-footer .btn {
+        width: 100%;
+    }
+
+    .project-tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .project-tabs .nav-item,
+    .project-tabs .nav-link {
+        width: 100%;
+    }
+
+    .summary-card,
+    .stat-card {
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 420px) {
+    .finance-box strong {
+        font-size: 0.7rem;
+    }
+
+    .finance-box span {
+        font-size: 0.62rem;
+    }
+
+    .project-card .card-body {
+        padding: 20px !important;
+    }
+}
